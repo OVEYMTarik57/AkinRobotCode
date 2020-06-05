@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants.  This class should not be used for any other purpose.  All constants should be
@@ -32,8 +34,45 @@ public final class Constants {
         public static final int frontRightMotorPin = 3;
         public static final int rearRightMotorPin = 4; 
 
+
+        public static final int rightWheelEncoder_A = 0;
+        public static final int rightWheelEncoder_B = 1;
+        public static final int leftWheelEncoder_A = 2;
+        public static final int leftWheelEncoder_B = 3;
+
+
+        public static final double driveP = 1.0;
+        public static final double driveI = 0.0;
+        public static final double driveD = 0.0;
+
+        public static final double turnAccuracy = 2.0;
+        public static final double distanceAccuracy = 3.0;
+        
+
         
         
+        //trajectory
+        public static final double ksVolts = 0.22;
+    public static final double kvVoltSecondsPerMeter = 1.98;
+    public static final double kaVoltSecondsSquaredPerMeter = 0.2;
+
+    // Example value only - as above, this must be tuned for your drive!
+    public static final double kPDriveVel = 8.5;
+    
+    public static final double kTrackwidthMeters = 0.69;
+    public static final DifferentialDriveKinematics kDriveKinematics =
+        new DifferentialDriveKinematics(kTrackwidthMeters);
+    
+
+        public static final double kMaxSpeedMetersPerSecond = 3;
+    public static final double kMaxAccelerationMetersPerSecondSquared = 3;
+    
+
+         // Reasonable baseline values for a RAMSETE follower in units of meters and seconds
+    public static final double kRamseteB = 2;
+    public static final double kRamseteZeta = 0.7;
+    
+       
 
     }
 
@@ -44,7 +83,7 @@ public final class Constants {
         public static final int intakeOpen1MotorPin = 6;
         public static final int intakeOpen2MotorPin = 7;
 
-        public static final int intakeHallEffect = 1;
+        public static final int intakeHallEffect = 4;
     }
 
         //Hopper
@@ -63,8 +102,8 @@ public final class Constants {
         public static final int shooterMotor1Pin = 12;
         public static final int shooterMotor2Pin = 13;
         
-        public static final int kShooterEncoderA = 0;
-        public static final int kShooterEncoderB = 1;
+        public static final int kShooterEncoderA = 5;
+        public static final int kShooterEncoderB = 6;
 
         public static final double turnP = 1.0;
         public static final double turnI = 0.0;

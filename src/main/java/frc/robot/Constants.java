@@ -17,11 +17,14 @@ package frc.robot;
  */
 public final class Constants {
 
+    //Joystick
+
     public final class JoystickConstants{
         public static final int driverControllerPin = 0;
    
        }
 
+       //Drive
 
     public static class DriveConstants{
         public static final int frontLeftMotorPin = 1;
@@ -29,15 +32,12 @@ public final class Constants {
         public static final int frontRightMotorPin = 3;
         public static final int rearRightMotorPin = 4; 
 
-        public static final double turnP = 1.0;
-        public static final double turnI = 0.0;
-        public static final double turnD = 0.0;
-
-        public static final double turnAccuracy = 2.0;
-        public static final double distanceAccuracy = 3.0;
-
+        
+        
 
     }
+
+        //intake
 
     public static class IntakeConstants{
         public static final int intakeMotorPin = 5;
@@ -47,6 +47,8 @@ public final class Constants {
         public static final int intakeHallEffect = 1;
     }
 
+        //Hopper
+
     public static class HopperConstants{
         public static final int hopperBagMotorPin = 8;
         public static final int centerMotorPin = 9;
@@ -55,12 +57,32 @@ public final class Constants {
 
     }
 
+        //Shooter
+
     public static class ShooterConstants{
         public static final int shooterMotor1Pin = 12;
         public static final int shooterMotor2Pin = 13;
-    
+        
+        public static final int kShooterEncoderA = 0;
+        public static final int kShooterEncoderB = 1;
+
+        public static final double turnP = 1.0;
+        public static final double turnI = 0.0;
+        public static final double turnD = 0.0;
+
+        public static final double kShooterEncoderPPR = 2048;
+
+        public static final double kS = 0.1;
+        public static final double kV = 0.001;
+        public static final double kA = 0.05;
+
+        public static final int kShooterToleranceRPM = 0;
+        public static final boolean kShooterEncoderIsReversed = false;
+
     }
 
+        //Climb
+    
     public static class ClimbConstants{
         public static final int climbMotorPin = 14;
         public static final int servoMotorPin = 15;

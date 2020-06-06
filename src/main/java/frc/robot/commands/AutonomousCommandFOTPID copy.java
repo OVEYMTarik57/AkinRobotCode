@@ -15,29 +15,27 @@ import frc.robot.subsystems.DriveSubsystem;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class FWDPID extends PIDCommand {
+public class AutonomousCommandFOTPID extends PIDCommand {
   /**
-   * Creates a new FieldOrientedTurnPID.
+   * Creates a new AutonomousCommandPID.
    */
-  public FWDPID(DriveSubsystem m_drive, double targetDistance) {
+  public AutonomousCommandFOTPID(DriveSubsystem m_drive, double targetAngle) {
     super(
         // The controller that the command will use
-        new PIDController(DriveConstants.distanceP, DriveConstants.distanceI, DriveConstants.distanceP),
+        new PIDController(DriveConstants.turnP, DriveConstants.turnI, DriveConstants.turnD),
         // This should return the measurement
-        () -> (m_drive.getRightWheelCm()+ m_drive.getLeftWheelCm())/2,
+        () -> m_drive.getHeading(),
         // This should return the setpoint (can also be a constant)
-        targetDistance,
+        targetAngle,
         // This uses the output
         output -> {
           // Use the output here
-          m_drive.arcadeDrive(output, 0);
+          m_drive.arcadeDrive(0, output);
         });
     // Use addRequirements() here to declare subsystem dependencies.
     // Configure additional PID options by calling `getController` here.
-        
     addRequirements(m_drive);
-        getController().setTolerance(DriveConstants.distanceAccuracy);
-  
+    getController().setTolerance(DriveConstants.turnAccuracy);
   
   }
 

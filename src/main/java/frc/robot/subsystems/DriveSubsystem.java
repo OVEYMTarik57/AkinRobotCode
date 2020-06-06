@@ -58,7 +58,7 @@ public class DriveSubsystem extends SubsystemBase {
     
   }
 
-  public void ArcadeDrive(double fwd, double rot){
+  public void arcadeDrive(double fwd, double rot){
     m_drive.arcadeDrive(fwd, rot, true);
   } 
   
@@ -77,7 +77,6 @@ public class DriveSubsystem extends SubsystemBase {
   {
     return gyro.getAngle();
   }
-
   
   
     public double getHeading(){

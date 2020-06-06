@@ -29,10 +29,10 @@ public final class Constants {
        //Drive
 
     public static class DriveConstants{
-        public static final int frontLeftMotorPin = 1;
-        public static final int rearLeftMotorPin = 2;
-        public static final int frontRightMotorPin = 3;
-        public static final int rearRightMotorPin = 4; 
+        public static final int frontLeftMotorPin = 0;
+        public static final int rearLeftMotorPin = 1;
+        public static final int frontRightMotorPin = 2;
+        public static final int rearRightMotorPin = 3; 
 
 
         public static final int rightWheelEncoder_A = 0;
@@ -41,12 +41,18 @@ public final class Constants {
         public static final int leftWheelEncoder_B = 3;
 
 
-        public static final double driveP = 1.0;
-        public static final double driveI = 0.0;
-        public static final double driveD = 0.0;
+        public static final double distanceP = 1.0;
+        public static final double distanceI = 0.0;
+        public static final double distanceD = 0.0;
 
-        public static final double turnAccuracy = 2.0;
         public static final double distanceAccuracy = 3.0;
+
+        public static final double turnP = 1.0;
+        public static final double turnI = 0.0;
+        public static final double turnD = 0.0;
+        
+        public static final double turnAccuracy = 2.0;
+        
         
 
         
@@ -79,9 +85,9 @@ public final class Constants {
         //intake
 
     public static class IntakeConstants{
-        public static final int intakeMotorPin = 5;
-        public static final int intakeOpen1MotorPin = 6;
-        public static final int intakeOpen2MotorPin = 7;
+        public static final int intakeMotorPin = 4;
+        public static final int intakeOpen1MotorPin = 5;
+        public static final int intakeOpen2MotorPin = 6;
 
         public static final int intakeHallEffect = 4;
     }
@@ -89,18 +95,18 @@ public final class Constants {
         //Hopper
 
     public static class HopperConstants{
-        public static final int hopperBagMotorPin = 8;
-        public static final int centerMotorPin = 9;
-        public static final int topMotorPin = 10;
-        public static final int bottomMotorPin = 11;
+        public static final int hopperBagMotorPin = 7;
+        public static final int centerMotorPin = 8;
+        public static final int topMotorPin = 9;
+        public static final int bottomMotorPin = 10;
 
     }
 
         //Shooter
 
     public static class ShooterConstants{
-        public static final int shooterMotor1Pin = 12;
-        public static final int shooterMotor2Pin = 13;
+        public static final int shooterMotor1Pin = 11;
+        public static final int shooterMotor2Pin = 12;
         
         public static final int kShooterEncoderA = 5;
         public static final int kShooterEncoderB = 6;
@@ -123,8 +129,8 @@ public final class Constants {
         //Climb
     
     public static class ClimbConstants{
-        public static final int climbMotorPin = 14;
-        public static final int servoMotorPin = 15;
+        public static final int climbMotorPin = 13;
+        public static final int servoMotorPin = 14;
         
     }
 }

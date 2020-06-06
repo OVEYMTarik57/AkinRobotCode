@@ -38,7 +38,6 @@ public class ShooterPID extends PIDCommand {
       });
       getController().setTolerance(100);
     m_shooter = shooter;
-    this.isInterruptable = isInterruptable;
     addRequirements(m_shooter);  
     
   }

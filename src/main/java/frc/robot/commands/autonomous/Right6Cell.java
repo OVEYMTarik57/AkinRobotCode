@@ -31,7 +31,7 @@ public class Right6Cell extends SequentialCommandGroup {
     super(
       new RunShooter(shooter, 0.75).withTimeout(1),
       new RunHopper(hopper, 0.5).raceWith(new RunShooter(shooter,0.75)).withTimeout(2),
-      s_trajectory.getRamsete(s_trajectory.Middle3Cell[0]).raceWith(new RunHopper(hopper, 0.5).raceWith(new RunShooter(shooter,0.75))),
+      s_trajectory.getRamsete(s_trajectory.CenterRight6Cell[0]).raceWith(new RunHopper(hopper, 0.5).raceWith(new RunShooter(shooter,0.75))),
       s_trajectory.getRamsete(s_trajectory.CenterRight6Cell[1]).andThen(() -> drive.arcadeDrive(0,0)),
       new RunShooter(shooter, 0.75).withTimeout(0.75),
       new RunHopper(hopper, 0.5).raceWith(new RunShooter(shooter, 0.75)).withTimeout(2));

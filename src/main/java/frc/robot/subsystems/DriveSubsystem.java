@@ -44,7 +44,9 @@ public class DriveSubsystem extends SubsystemBase {
 
 
   public DriveSubsystem() {
-
+    rightWheelEncoder.setDistancePerPulse((7.62*2*Math.PI)/2048.0);
+    leftWheelEncoder.setDistancePerPulse((7.62*2*Math.PI)/2048.0);
+    
     m_odometry = new DifferentialDriveOdometry(Rotation2d.fromDegrees(getHeading()));
     gyro.calibrate();
   

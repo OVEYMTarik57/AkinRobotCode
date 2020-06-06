@@ -12,10 +12,12 @@ import frc.robot.SneakyTrajectory;
 import frc.robot.commands.RunHopper;
 import frc.robot.commands.RunIntake;
 import frc.robot.commands.RunShooter;
+import frc.robot.commands.RunTransfer;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.HopperSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.TransferSubsystem;
 
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -25,17 +27,17 @@ public class Left8Cell extends SequentialCommandGroup {
   /**
    * Creates a new Left8Cell.
    */
-  public Left8Cell(SneakyTrajectory s_trajectory, ShooterSubsystem shooter, IntakeSubsystem intake, HopperSubsystem hopper, DriveSubsystem drive) {
+  public Left8Cell(SneakyTrajectory s_trajectory, ShooterSubsystem shooter, IntakeSubsystem intake, HopperSubsystem hopper, DriveSubsystem drive, TransferSubsystem transfer) {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     super(
       s_trajectory.getRamsete(s_trajectory.Left8Cell[0]).raceWith(new RunIntake(intake, 0.75).raceWith(new RunHopper(hopper, 0.50))),
       s_trajectory.getRamsete(s_trajectory.Left8Cell[1]),
       new RunShooter(shooter, 0.75).withTimeout(1),
-      new RunShooter(shooter, 0.75).raceWith(new RunHopper(hopper, 0.50)),
+      new RunTransfer(transfer, 0.4).raceWith(new RunShooter(shooter, 0.75).raceWith(new RunHopper(hopper, 0.50))).withTimeout(3),
       s_trajectory.getRamsete(s_trajectory.Left8Cell[2]).raceWith(new RunIntake(intake, 0.75).raceWith(new RunHopper(hopper, 0.50))),
       s_trajectory.getRamsete(s_trajectory.Left8Cell[3]).andThen(() -> drive.arcadeDrive(0,0)).raceWith(new RunShooter(shooter, 0.75)), 
-      new RunShooter(shooter, 0.75).raceWith(new RunHopper(hopper, 0.50)).withTimeout(3)
+      new RunTransfer(transfer, 0.4).raceWith(new RunShooter(shooter, 0.75).raceWith(new RunHopper(hopper, 0.50)).withTimeout(3))
 
     );
   }

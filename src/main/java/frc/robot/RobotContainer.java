@@ -31,6 +31,12 @@ import frc.robot.commands.RunIntake;
 import frc.robot.commands.RunShooter;
 import frc.robot.commands.RunTransfer;
 import frc.robot.commands.ToggleIntake;
+import frc.robot.commands.autonomous.CenterRight6Cell;
+import frc.robot.commands.autonomous.Left3Cell;
+import frc.robot.commands.autonomous.Left8Cell;
+import frc.robot.commands.autonomous.Middle3Cell;
+import frc.robot.commands.autonomous.Right3Cell;
+import frc.robot.commands.autonomous.Right6Cell;
 import frc.robot.subsystems.ClimbSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.HopperSubsystem;
@@ -57,6 +63,7 @@ public class RobotContainer {
   private final ClimbSubsystem m_climb = new ClimbSubsystem();
   private final ClimbSubsystem m_lock = new ClimbSubsystem();
   private final DriveSubsystem m_drive = new DriveSubsystem();
+  private final SneakyTrajectory m_SneakyTrajectory = new SneakyTrajectory(m_drive);
 
 
 
@@ -85,14 +92,18 @@ public class RobotContainer {
     //
     new JoystickButton(m_driverController, 2).whileHeld(new RunHopper(m_hopper, 0.5));
     new JoystickButton(m_driverController, 2).whileHeld(new RunTransfer(m_transfer, 0.8));
+    new JoystickButton(m_driverController, 2).whileHeld(new RunShooter(m_shooter, 0.6));
     //
-    new JoystickButton(m_driverController, 3).whileHeld(new RunIntake(m_intake, -0.4));
-    new JoystickButton(m_driverController, 4).toggleWhenPressed(new ToggleIntake(m_intake, 0.9));
-    new JoystickButton(m_driverController, 5).whileHeld(new RunShooter(m_shooter, 0.6));
-    new JoystickButton(m_driverController, 6).whileHeld(new RunShooter(m_shooter, -0.32));
-    new JoystickButton(m_driverController, 7).whileHeld(new RunClimb(m_climb, 0.5));
-    new JoystickButton(m_driverController, 8).whileHeld(new RunClimb(m_climb, -0.5));
-    new JoystickButton(m_driverController, 4).toggleWhenPressed(new LockClimb(m_lock, 0.9));
+    new JoystickButton(m_driverController, 3).whileHeld(new RunIntake(m_intake, 0.8));
+    new JoystickButton(m_driverController, 4).whileHeld(new RunIntake(m_intake, -0.4));
+    new JoystickButton(m_driverController, 5).toggleWhenPressed(new ToggleIntake(m_intake, 0.9));
+    new JoystickButton(m_driverController, 6).whileHeld(new RunShooter(m_shooter, 0.6));
+    new JoystickButton(m_driverController, 7).whileHeld(new RunShooter(m_shooter, -0.32));
+    new JoystickButton(m_driverController, 8).whileHeld(new RunClimb(m_climb, 0.5));
+    new JoystickButton(m_driverController, 9).whileHeld(new RunClimb(m_climb, -0.5));
+    new JoystickButton(m_driverController, 10).toggleWhenPressed(new LockClimb(m_lock, 0.9));
+    new JoystickButton(m_driverController, 11).toggleWhenPressed(new RunTransfer(m_transfer, 0.3));
+    new JoystickButton(m_driverController, 12).toggleWhenPressed(new RunTransfer(m_transfer, -0.3));
     
 
     
@@ -173,8 +184,25 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
+  public Command getAutonomousCommand(Integer auto) {
     // An ExampleCommand will run in autonomous
-    return null;
+    
+    switch(auto){
+      case 1:
+      return new Left8Cell(m_SneakyTrajectory, m_shooter, m_intake, m_hopper, m_drive, m_transfer);
+      case 2:
+      return new Right3Cell(m_SneakyTrajectory, m_shooter, m_intake, m_hopper, m_drive, m_transfer);
+      case 3:
+      return new CenterRight6Cell(m_SneakyTrajectory, m_shooter, m_intake, m_hopper, m_drive,m_transfer);
+      case 4:
+      return new Left3Cell(m_SneakyTrajectory, m_shooter, m_intake, m_hopper, m_drive, m_transfer);
+      case 5: 
+      return new Middle3Cell(m_SneakyTrajectory, m_shooter, m_intake, m_hopper, m_drive, m_transfer);
+     
+      default:
+      return null;
+
+
+  }
   }
 }

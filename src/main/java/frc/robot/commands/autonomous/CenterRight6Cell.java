@@ -12,10 +12,12 @@ import frc.robot.SneakyTrajectory;
 import frc.robot.commands.RunHopper;
 import frc.robot.commands.RunIntake;
 import frc.robot.commands.RunShooter;
+import frc.robot.commands.RunTransfer;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.HopperSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.TransferSubsystem;
 
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -26,17 +28,17 @@ public class CenterRight6Cell extends SequentialCommandGroup {
    * Creates a new CenerRight6Cell.
    */
   public CenterRight6Cell(SneakyTrajectory s_trajectory, ShooterSubsystem shooter, IntakeSubsystem intake, 
-  HopperSubsystem hopper, DriveSubsystem drive) {
+  HopperSubsystem hopper, DriveSubsystem drive, TransferSubsystem transfer) {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand()); 
     super(
       new RunShooter(shooter, 0.75).withTimeout(0.75),
-      new RunHopper(hopper, 0.5).raceWith(new RunShooter(shooter,0.75)).withTimeout(2),
+      new RunTransfer(transfer, 0.4).raceWith(new RunHopper(hopper, 0.5).raceWith(new RunShooter(shooter,0.75))).withTimeout(2),
       s_trajectory.getRamsete(s_trajectory.CenterRight6Cell[0]).
       raceWith(new RunHopper(hopper, 0.5)).raceWith(new RunIntake(intake, 0.75))
       ,s_trajectory.getRamsete(s_trajectory.CenterRight6Cell[1]).andThen(() -> drive.arcadeDrive(0,0)),
       new RunShooter(shooter, 0.75).withTimeout(0.75),
-      new RunHopper(hopper, 0.5).raceWith(new RunShooter(shooter, 0.75)).withTimeout(2));
+      new RunTransfer(transfer, 0.4).raceWith(new RunHopper(hopper, 0.5).raceWith(new RunShooter(shooter, 0.75))).withTimeout(2));
     
 
     

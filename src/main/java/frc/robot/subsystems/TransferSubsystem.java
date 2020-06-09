@@ -7,15 +7,16 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.VictorSP;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.HopperConstants;
 
 public class TransferSubsystem extends SubsystemBase {
   
-  private final VictorSP centerMotor = new VictorSP(HopperConstants.centerMotorPin);
-  private final VictorSP topMotor = new VictorSP(HopperConstants.topMotorPin);
-  private final VictorSP bottomMotor = new VictorSP(HopperConstants.bottomMotorPin);
+  private final WPI_VictorSPX centerMotor = new WPI_VictorSPX(HopperConstants.centerMotorPin);
+  private final WPI_VictorSPX topMotor = new WPI_VictorSPX(HopperConstants.topMotorPin);
+  private final WPI_VictorSPX bottomMotor = new WPI_VictorSPX(HopperConstants.bottomMotorPin);
 
   public TransferSubsystem() {
 

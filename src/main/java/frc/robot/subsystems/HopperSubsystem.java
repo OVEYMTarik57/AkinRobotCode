@@ -7,14 +7,15 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.VictorSP;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.HopperConstants;
 
 
 public class HopperSubsystem extends SubsystemBase {
   
-  private final VictorSP hopperBagMotor = new VictorSP(HopperConstants.hopperBagMotorPin);
+  private final WPI_VictorSPX hopperBagMotor = new WPI_VictorSPX(HopperConstants.hopperBagMotorPin);
 
   public HopperSubsystem() {
 

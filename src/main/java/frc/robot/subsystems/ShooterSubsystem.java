@@ -7,8 +7,10 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterConstants;
@@ -17,10 +19,10 @@ public class ShooterSubsystem extends SubsystemBase {
   
   public boolean isAtSetpoint = false;
   
-  private final VictorSP shooterMotor1 = new VictorSP(ShooterConstants.shooterMotor1Pin);
-  private final VictorSP shooterMotor2 = new VictorSP(ShooterConstants.shooterMotor2Pin);
+  private final WPI_VictorSPX shooterMotor1 = new WPI_VictorSPX(ShooterConstants.shooterMotor1Pin);
+  private final WPI_VictorSPX shooterMotor2 = new WPI_VictorSPX(ShooterConstants.shooterMotor2Pin);
   public final Encoder shooterEncoder = new Encoder(ShooterConstants.kShooterEncoderA,
-      ShooterConstants.kShooterEncoderB, ShooterConstants.kShooterEncoderIsReversed);
+      ShooterConstants.kShooterEncoderB, ShooterConstants.kShooterEncoderIsReversed,EncodingType.k4X);
 
 
 

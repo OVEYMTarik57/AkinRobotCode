@@ -7,10 +7,11 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.geometry.Pose2d;
@@ -26,10 +27,10 @@ public class DriveSubsystem extends SubsystemBase {
   /**
    * Creates a new DriveSubsystem.
    */
-    private final VictorSP frontLeftMotor = new VictorSP(Constants.DriveConstants.frontLeftMotorPin); 
-    private final VictorSP rearLeftMotor = new VictorSP(Constants.DriveConstants.rearLeftMotorPin);
-    private final VictorSP frontRightMotor = new VictorSP(Constants.DriveConstants.frontRightMotorPin);
-    private final VictorSP rearRightMotor = new VictorSP(Constants.DriveConstants.rearRightMotorPin);
+    private final WPI_VictorSPX frontLeftMotor = new WPI_VictorSPX(Constants.DriveConstants.frontLeftMotorPin); 
+    private final WPI_VictorSPX rearLeftMotor = new WPI_VictorSPX(Constants.DriveConstants.rearLeftMotorPin);
+    private final WPI_VictorSPX frontRightMotor = new WPI_VictorSPX(Constants.DriveConstants.frontRightMotorPin);
+    private final WPI_VictorSPX rearRightMotor = new WPI_VictorSPX(Constants.DriveConstants.rearRightMotorPin);
 
     private final SpeedControllerGroup leftGroup = new SpeedControllerGroup(frontLeftMotor, rearLeftMotor);
     private final SpeedControllerGroup rightGroup = new SpeedControllerGroup(frontRightMotor, rearRightMotor);

@@ -30,7 +30,7 @@ public final class Constants {
 
     public static class DriveConstants{
         public static final int frontLeftMotorPin = 0;
-        public static final int rearLeftMotorPin = 1;
+        public static final int rearLeftMotorPin = 14;
         public static final int frontRightMotorPin = 2;
         public static final int rearRightMotorPin = 3; 
 
@@ -130,7 +130,7 @@ public final class Constants {
     
     public static class ClimbConstants{
         public static final int climbMotorPin = 13;
-        public static final int servoMotorPin = 14;
+        public static final int servoMotorPin = 1;
         
     }
 }

@@ -7,16 +7,17 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
 
 public class IntakeSubsystem extends SubsystemBase {
   
-  private final VictorSP intakeMotor = new VictorSP (IntakeConstants.intakeMotorPin); 
-  private final VictorSP intakeOpen1Motor = new VictorSP(IntakeConstants.intakeOpen1MotorPin); 
-  private final VictorSP intakeOpen2Motor = new VictorSP(IntakeConstants.intakeOpen2MotorPin); 
+  private final WPI_VictorSPX intakeMotor = new WPI_VictorSPX (IntakeConstants.intakeMotorPin); 
+  private final WPI_VictorSPX intakeOpen1Motor = new WPI_VictorSPX(IntakeConstants.intakeOpen1MotorPin); 
+  private final WPI_VictorSPX intakeOpen2Motor = new WPI_VictorSPX(IntakeConstants.intakeOpen2MotorPin); 
   private final DigitalInput intakeHallEffect = new DigitalInput(IntakeConstants.intakeHallEffect);
   
   

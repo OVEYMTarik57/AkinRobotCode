@@ -7,14 +7,15 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj.Servo;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ClimbConstants;
 
 public class ClimbSubsystem extends SubsystemBase {
   
-  private final VictorSP climbMotor = new VictorSP(ClimbConstants.climbMotorPin);
+  private final WPI_VictorSPX climbMotor = new WPI_VictorSPX(ClimbConstants.climbMotorPin);
   private final Servo servoMotor = new Servo(ClimbConstants.servoMotorPin);
 
   public ClimbSubsystem() {

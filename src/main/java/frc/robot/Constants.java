@@ -29,10 +29,10 @@ public final class Constants {
        //Drive
 
     public static class DriveConstants{
-        public static final int frontLeftMotorPin = 0;
-        public static final int rearLeftMotorPin = 14;
-        public static final int frontRightMotorPin = 2;
-        public static final int rearRightMotorPin = 3; 
+        public static final int frontLeftMotorPin = 1;
+        public static final int rearLeftMotorPin = 2;
+        public static final int frontRightMotorPin = 3;
+        public static final int rearRightMotorPin = 4; 
 
 
         public static final int rightWheelEncoder_A = 0;
@@ -85,31 +85,32 @@ public final class Constants {
         //intake
 
     public static class IntakeConstants{
-        public static final int intakeMotorPin = 4;
-        public static final int intakeOpen1MotorPin = 5;
-        public static final int intakeOpen2MotorPin = 6;
+        public static final int intakeMotorPin = 5;
+        public static final int intakeOpen1MotorPin = 6;
+        public static final int intakeOpen2MotorPin = 7;
 
-        public static final int intakeHallEffect = 4;
+        public static final int intakeTopHallEffect = 4;
+        public static final int intakeBottomHallEffect = 5;
     }
 
         //Hopper
 
     public static class HopperConstants{
-        public static final int hopperBagMotorPin = 7;
-        public static final int centerMotorPin = 8;
-        public static final int topMotorPin = 9;
-        public static final int bottomMotorPin = 10;
+        public static final int hopperBagMotorPin = 8;
+        public static final int centerMotorPin = 9;
+        public static final int topMotorPin = 10;
+        public static final int bottomMotorPin = 11;
 
     }
 
         //Shooter
 
     public static class ShooterConstants{
-        public static final int shooterMotor1Pin = 11;
-        public static final int shooterMotor2Pin = 12;
+        public static final int shooterMotor1Pin = 12;
+        public static final int shooterMotor2Pin = 13;
         
-        public static final int kShooterEncoderA = 5;
-        public static final int kShooterEncoderB = 6;
+        public static final int kShooterEncoderA = 6;
+        public static final int kShooterEncoderB = 7;
 
         public static final double turnP = 1.0;
         public static final double turnI = 0.0;
@@ -123,14 +124,15 @@ public final class Constants {
 
         public static final int kShooterToleranceRPM = 0;
         public static final boolean kShooterEncoderIsReversed = false;
+        
 
     }
 
         //Climb
     
     public static class ClimbConstants{
-        public static final int climbMotorPin = 13;
-        public static final int servoMotorPin = 1;
+        public static final int climbMotorPin = 14;
+        public static final int servoMotorPin = 0;
         
     }
 }

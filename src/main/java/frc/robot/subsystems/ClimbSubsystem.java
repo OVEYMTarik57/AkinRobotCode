@@ -32,11 +32,11 @@ public class ClimbSubsystem extends SubsystemBase {
     }
 
     public void runServo(double speed){ //servo motoru çalıştırıyoruz.
-      servoMotor.set(speed);
+      servoMotor.setAngle(speed);
     }
 
     public void stopServo(){ 
-      servoMotor.set(0);
+      servoMotor.setAngle(0);
     } 
 
     public void stopClimb(){

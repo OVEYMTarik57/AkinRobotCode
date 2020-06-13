@@ -18,7 +18,8 @@ public class IntakeSubsystem extends SubsystemBase {
   private final WPI_VictorSPX intakeMotor = new WPI_VictorSPX (IntakeConstants.intakeMotorPin); 
   private final WPI_VictorSPX intakeOpen1Motor = new WPI_VictorSPX(IntakeConstants.intakeOpen1MotorPin); 
   private final WPI_VictorSPX intakeOpen2Motor = new WPI_VictorSPX(IntakeConstants.intakeOpen2MotorPin); 
-  private final DigitalInput intakeHallEffect = new DigitalInput(IntakeConstants.intakeHallEffect);
+  private final DigitalInput intakeTopHallEffect = new DigitalInput(IntakeConstants.intakeTopHallEffect);
+  private final DigitalInput intakeBottomHallEffect = new DigitalInput(IntakeConstants.intakeBottomHallEffect);
   
   
 
@@ -51,8 +52,12 @@ public class IntakeSubsystem extends SubsystemBase {
     intakeOpen2Motor.set(speed); 
   }
 
-  public boolean getHallEffect(){
-    return intakeHallEffect.get();
+  public boolean getTopHallEffect(){
+    return intakeTopHallEffect.get();
+  }
+
+  public boolean getBottomHallEffect(){
+    return intakeBottomHallEffect.get();
   }
   
 

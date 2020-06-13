@@ -41,6 +41,12 @@ public class ToggleIntake extends CommandBase {
   
   @Override
   public boolean isFinished() {
-    return false;
+    if (m_speed < 0) {
+      return m_toggleintake.getTopHallEffect();
+    } 
+    else {
+    return m_toggleintake.getBottomHallEffect();
+
+    }
   }
 }

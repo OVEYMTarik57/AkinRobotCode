@@ -7,6 +7,11 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -22,8 +27,14 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
+  NetworkTableInstance chameleon = NetworkTableInstance.create();
+
   private RobotContainer m_robotContainer;
   private SendableChooser<Integer> m_autonomousChooser; //Autonom seçme noktası.
+
+  public static Joystick joystick;
+  public static NetworkTableEntry yaw;
+  public static NetworkTableEntry isDriverMode;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -41,6 +52,16 @@ public class Robot extends TimedRobot {
     m_autonomousChooser.addOption("sol 3", 4);
     m_autonomousChooser.addOption("orta 3", 5);
     SmartDashboard.putData("Otonom Secimi", m_autonomousChooser); //SmartDashbooard a yerleştirme.
+
+
+    joystick = new Joystick(1);
+    NetworkTableInstance table = NetworkTableInstance.getDefault();
+    NetworkTable cameraTable = chameleon.getTable("chameleon-vision").getSubTable("Microsoft LifeCam HD-3000");
+    yaw = cameraTable.getEntry("yaw");
+    isDriverMode = cameraTable.getEntry("driver_mode");
+
+
+
 
   }
 
@@ -107,6 +128,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    System.out.println(yaw.getDouble(0.0));
+    isDriverMode.setBoolean(joystick.getRawButton(0));
+
   }
 
   @Override

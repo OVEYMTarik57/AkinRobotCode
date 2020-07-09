@@ -7,7 +7,6 @@
 
 package frc.robot;
 
-
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -19,6 +18,7 @@ import frc.robot.commands.RunIntake;
 import frc.robot.commands.RunShooter;
 import frc.robot.commands.RunTransfer;
 import frc.robot.commands.ToggleIntake;
+import frc.robot.commands.VisionLED.ToggleLED;
 import frc.robot.commands.autonomous.CenterRight6Cell;
 import frc.robot.commands.autonomous.Left3Cell;
 import frc.robot.commands.autonomous.Left8Cell;
@@ -30,6 +30,7 @@ import frc.robot.subsystems.HopperSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.TransferSubsystem;
+import frc.robot.subsystems.VisionLED;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -50,7 +51,7 @@ public class RobotContainer {
   private final ClimbSubsystem m_lock = new ClimbSubsystem();
   private final DriveSubsystem m_drive = new DriveSubsystem();
   private final SneakyTrajectory m_SneakyTrajectory = new SneakyTrajectory(m_drive);
-
+  private final VisionLED m_led = new VisionLED();
 
 
   public Joystick m_driverController = new Joystick(JoystickConstants.driverControllerPin);
@@ -90,6 +91,9 @@ public class RobotContainer {
     new JoystickButton(m_driverController, 10).toggleWhenPressed(new LockClimb(m_lock, 0.9));
     new JoystickButton(m_driverController, 11).toggleWhenPressed(new RunTransfer(m_transfer, 0.3));
     new JoystickButton(m_driverController, 12).toggleWhenPressed(new RunTransfer(m_transfer, -0.3));
+
+    new JoystickButton(m_driverController, 10).whenPressed(new ToggleLED(m_led));
+
     
 
     

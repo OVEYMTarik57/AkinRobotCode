@@ -33,7 +33,7 @@ public class Robot extends TimedRobot {
   private SendableChooser<Integer> m_autonomousChooser; //Autonom seçme noktası.
 
   public static Joystick joystick;
-  public static NetworkTableEntry yaw;
+  public static NetworkTableEntry targetYaw;
   public static NetworkTableEntry isDriverMode;
 
   /**
@@ -57,7 +57,7 @@ public class Robot extends TimedRobot {
     joystick = new Joystick(1);
     NetworkTableInstance table = NetworkTableInstance.getDefault();
     NetworkTable cameraTable = chameleon.getTable("chameleon-vision").getSubTable("Microsoft LifeCam HD-3000");
-    yaw = cameraTable.getEntry("yaw");
+    targetYaw = cameraTable.getEntry("targetYaw");
     isDriverMode = cameraTable.getEntry("driver_mode");
 
 
@@ -128,7 +128,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    System.out.println(yaw.getDouble(0.0));
+    System.out.println(targetYaw.getDouble(0.0));
     isDriverMode.setBoolean(joystick.getRawButton(0));
 
   }
